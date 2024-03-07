@@ -1,0 +1,5 @@
+src/config/__pycache__/
+source/*
+.venv/
+.idea/
+data/*

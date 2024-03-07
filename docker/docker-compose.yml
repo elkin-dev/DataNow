@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  DataNow:
+    image: postgres:16.2
+    restart: always
+    ports:
+      - "127.0.0.1:5438:5432"
+    shm_size: 128mb
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "datanow2024"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "127.0.0.1:9090:8080"
+
+volumes:
+  postgres-data:
