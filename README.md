@@ -1,6 +1,6 @@
-## 1. CARGA DE INFORMACIÓN
+#  Creación de entorno
 
-En este apartado se consolida la información de como se implementa la solución del problema planteado en el punto **1**
+En este apartado se consolida la información del entorno necesario donde se brindan la soluciones a diferentes de los problemas planteados
 
 ## Requisitos
 
@@ -29,50 +29,8 @@ pip install -r requirements.txt
 
 #### 2.3. Creación contenedor docker
 
-- Se crea el archivo llamado `Dockerfile`
-
-  ```yml
-  # Usa la imagen oficial de PostgreSQL como base
-  FROM postgres:16.2
-
-  # Copiar un archivo de configuración personalizado
-  COPY postgresql.conf /etc/postgresql/postgresql.conf
-
-  # Exponer el puerto por defecto
-  EXPOSE 5432
-
-  # Iniciar PostgreSQL al ejecutar el contenedor
-  CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
-
-  ```
-
-- Creación del `docker-compose.yml`
-
-  ```yml
-  version: "3.9"
-
-  services:
-  DB-DataNow:
-    image: postgres:16.2
-    restart: always
-    ports:
-      - "127.0.0.1:5438:5432"
-    shm_size: 128mb
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: "datanow2024"
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "127.0.0.1:9090:8080"
-
-  volumes:
-  postgres-data:
-  ```
+- Se crea el archivo llamado `Dockerfile` ubicado en el directorio docker
+- Creación del `docker-compose.yml` ubicado en el directorio docker
 
 - Ejecutar el contenedor
 

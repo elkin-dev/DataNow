@@ -6,7 +6,6 @@ SELECT
 FROM
   empleado;
 
-
 -- Seleccione nombre, apellido y salario de todos los empleados que ganen más de 4 millones.
 SELECT
   nombre,
